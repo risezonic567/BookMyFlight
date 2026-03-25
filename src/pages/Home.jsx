@@ -6,11 +6,13 @@ import TopFlightDeals from '../component/TopFlightDeals';
 import FAQSection from '../component/FAQSection';
 import Newsletter from '../component/Newsletter';
 import BlogSlider from '../component/BlogSlider';
+import TrustSection from '../component/TrustSection';
 
 const Home = () => {
   return (
     <div>
       <SearchEngine />
+      <TrustSection/>
       <PopularDeals/>
       <PopularDestinations />
       <TopFlightDeals/>

@@ -22,7 +22,7 @@ const FAQSection = () => {
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8">
+        <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
           FAQ About Air Ticket Reservation
         </h2>
         

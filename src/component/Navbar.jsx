@@ -52,11 +52,10 @@ const Navbar = () => {
           <Link to="/my-booking" className="hover:text-blue-900  text-lg transition-colors">
               My Booking
           </Link>
-          <Link to="/blog" className="hover:text-blue-900 text-lg  transition-colors">Blogs</Link>
+          <Link to="/blog"  className="hover:text-blue-900 text-lg  transition-colors">Blogs</Link>
           
           <Link to="/packages" className="hover:text-blue-900 transition-colors  text-lg">
-              Packages
-            
+              Packages  
           </Link>
         </nav>
 
