@@ -40,11 +40,11 @@ const SearchEngine = () => {
   };
 
   return (
-    <section className="relative min-h-[430px] flex items-center justify-center py-12 px-4 bg-cover bg-center" 
-             style={{ backgroundImage: "url('https://www.flightschannel.com/images/ho_se_banner.webp')" }}>
+    <section className="relative min-h-[470px] flex items-center justify-center py-12 px-4 bg-cover bg-center" 
+             style={{ backgroundImage: "url('/images/banner (book myflight).jpg.jpeg')" }}>
       
       <div className="absolute inset-0 bg-black/30">
-      <div className='flex flex-col max-w-7xl mx-30 pt-12 '>
+      <div className='flex flex-col max-w-7xl mx-30 pt-17 '>
         <h1 className="text-4xl font-bold text-white pb-2">Explore the Skies</h1>
         <p className='text-white'>Your Ultimate Flight Booking Search Engine for Seamless Travel Experiences!</p>
       </div>

@@ -47,7 +47,7 @@ const BlogSlider = () => {
   
 
   return (
-    <section className="py-10 bg-white overflow-hidden md:block hidden">
+    <section className="py-20 bg-white overflow-hidden md:block hidden">
       <div className="container mx-auto px-4 max-w-7xl relative">
         
         {/* Header Section */}

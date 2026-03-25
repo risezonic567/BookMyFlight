@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import blogs from "../data/blogs";
 import BlogCard from "../component/BlogCard";
 import { Helmet } from "react-helmet";
+import { ChevronRight } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 export default function BlogList() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +39,7 @@ export default function BlogList() {
         <>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Malani Marbles Blog | Marble Guides, Comparisons & Tips</title>
+                <title>Book My Flight Blog | Flight Guides, Comparisons & Tips</title>
                 <meta
                     name="description"
                     content="Explore expert tips, buying guides, trends & comparisons on marble, granite, and tiles from Malani Marbles – India’s trusted natural stone supplier."
@@ -54,6 +56,54 @@ export default function BlogList() {
                     alt="Blog Banner"
                 />
             </div>
+            <section className="py-16 px-6 max-w-7xl mx-auto font-sans">
+      {/* Section Title */}
+
+      {/* Blog Container */}
+      <div className="flex flex-col lg:flex-row gap-8 items-center bg-white overflow-hidden">
+        
+        {/* Left: Image Section */}
+        <div className="relative w-full lg:w-3/5 rounded-2xl overflow-hidden shadow-lg group">
+          <img 
+            src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=1200" 
+            alt="Travelers at Airport" 
+            className="w-full h-[300px] md:h-[450px] object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+          {/* Category Tag */}
+          <div className="absolute top-4 left-4">
+            <span className="bg-[#FFD700] text-black text-xs font-bold px-3 py-1 rounded shadow-sm uppercase tracking-tight">
+              Travel Tips
+            </span>
+          </div>
+        </div>
+
+        {/* Right: Content Section */}
+        <div className="w-full lg:w-2/5 flex flex-col justify-center space-y-4 px-2">
+          <h3 className="text-3xl md:text-4xl font-extrabold text-[#1a2b48] leading-tight">
+            The Right Time to Get to the Airport
+          </h3>
+          
+          <p className="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-6">
+            When you are planning a trip somewhere, you will want to be as thorough as possible, 
+            making sure that there are no mistakes. If you are opting for flights over trains 
+            or buses, there could be numerous reasons for this. Mostly it will be much quicker 
+            and it is also considered to be the safest mode of transport. So, you have decided 
+            upon where you will be staying and have calculated the amount you will need to spend 
+            on your trip. Alternatively, your company may have decided everything for you if you are going f...
+          </p>
+
+          <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span className="text-gray-500 font-medium text-sm">16 Oct 2023</span>
+            
+            <button className="flex items-center gap-2 bg-[#1F3F63] text-white px-5 py-2.5 rounded-lg font-bold hover:bg-[#1a3554] transition shadow-md group">
+              <Link to="/blog/home-interior-trends-2026-italian-marble-beige-marble-italian-tiles">Read More</Link>
+              <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
             {/* Content */}
             <div className="max-w-7xl mx-auto px-4 py-12">

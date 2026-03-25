@@ -1,150 +1,160 @@
-import React from "react";
-import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { Phone, Mail, MessageSquare, MapPin } from 'lucide-react';
 
-export default function ContactUsPage() {
+const ContactUsPage = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Form submission logic here
+  };
+
   return (
-
     <>
-      <div className="relative h-[60vh]">
+      <div className="bg-[#f4f7fe] min-h-screen py-16 px-4">
+      <Helmet>
+        <title>Contact Us | Flights Channel</title>
+        <meta name="description" content="Get in touch with Flights Channel for your travel needs." />
+      </Helmet>
 
-        <img
-          src=""
-          alt="banner"
-          className=" object-cover"
-        />
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 items-stretch">
+        
+        {/* Left Section: Contact Information Card */}
+        <div className="w-full lg:w-[45%] bg-white rounded-lg shadow-sm p-8 border border-gray-100">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
+            {/* Representative Image */}
+            <div className="w-48 h-48 rounded-full border-4 border-[#a5e1ff] overflow-hidden flex-shrink-0">
+              <img 
+                src="https://img.freepik.com/free-photo/smiling-female-customer-service-representative-with-headset-office_23-2148296313.jpg" 
+                alt="Support Representative" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            <div className="text-center md:text-left">
+              <h2 className="text-4xl font-black text-[#2e3d82] mb-6">Flights Channel</h2>
+              
+              <div className="space-y-4">
+                {/* US Address */}
+                <div className="flex items-start gap-2">
+                  <img src="https://flagcdn.com/w20/us.png" alt="US Flag" className="mt-1" />
+                  <div>
+                    <h4 className="font-bold text-[#2e3d82]">US Address:</h4>
+                    <p className="text-gray-700 text-sm leading-relaxed font-semibold">
+                      7260 W Azure Dr. STE 140-2212, Las Vegas, NV 89130, USA
+                    </p>
+                  </div>
+                </div>
 
-        <div className="absolute inset-0 bg-black/30"></div>
+                {/* Canada Address */}
+                <div className="flex items-start gap-2">
+                  <img src="https://flagcdn.com/w20/ca.png" alt="Canada Flag" className="mt-1" />
+                  <div>
+                    <h4 className="font-bold text-[#2e3d82]">Canada Address:</h4>
+                    <p className="text-gray-700 text-sm leading-relaxed font-semibold">
+                      1918 Boul.Saint-Regid Dorval, QC, H9P 1H6 CANADA
+                    </p>
+                  </div>
+                </div>
 
-        <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-20 text-white">
+                {/* Contact Links */}
+                <div className="pt-2 space-y-2">
+                  <div className="flex gap-2 text-sm font-semibold">
+                    <span className="text-[#1a1a1a]">Email:</span>
+                    <a href="mailto:support@flightschannel.com" className="text-blue-600 hover:underline">
+                      support@flightschannel.com
+                    </a>
+                  </div>
+                  <div className="flex gap-2 text-sm font-semibold">
+                    <span className="text-[#1a1a1a]">Call us:</span>
+                    <a href="tel:+18446099922" className="text-blue-600 hover:underline">
+                      +1-844-609-9922
+                    </a>
+                  </div>
+                </div>
 
-          <div className="mt-20">
-
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center">
-              Let’s connect and solve your queries with our dedicated support team today
-            </h1>
-
-            <p className="mb-6 text-lg text-center">
-              Your satisfaction is our priority. Contact us for any help, feedback, or questions and we will make sure to guide you with the best solution.
-            </p>
+                {/* WhatsApp Section */}
+                <div className="pt-4">
+                  <h4 className="font-bold text-[#1a1a1a] mb-2">Contact us on WhatsApp:</h4>
+                  <a 
+                    href="https://wa.me/18446099922" 
+                    className="flex items-center gap-2 text-[#25d366] font-bold hover:opacity-80 transition-opacity"
+                  >
+                    <MessageSquare size={20} fill="#25d366" className="text-white" />
+                    Contact us on WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <button className="mb-6 text-lg  text-center">
-            <Link to='tel:+918858587858' className="bg-blue-600 p-4 rounded-xl hover:bg-blue-800">Contact Us</Link>
-          </button>
         </div>
-      </div>
-      <section className=" py-10 px-4">
-         <div className="text-center">
-              <h2 className="text-3xl text-blue-600 font-bold mb-2">Contact Us</h2>
-              <p className="text-gray-600">
-                Have questions? We'd love to hear from you. Reach out anytime.
-              </p>
-            </div>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
 
-          {/* Left Side - Info */}
-          <div className="bg-white p-8 rounded-2xl shadow-blue-300 space-y-6 hover:shadow-md transition">
-
-            {/* Heading */}
-           
-
-            {/* 🔥 ONE LINE CONTACT INFO */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-
-              {/* Phone */}
-              <div className="flex flex-col items-center gap-2">
-                <div className="bg-blue-300 p-3 rounded-full">
-                  <FaPhoneAlt className="text-blue-600 text-xl" />
-                </div>
-                <p className="text-gray-700 text-sm">
-                  <strong>Phone:</strong><br />
-                  <Link to="tel:+918986286734">+91 8986286734</Link>
-                </p>
+        {/* Right Section: Email Form */}
+        <div className="w-full lg:w-[55%] bg-white rounded-lg shadow-sm p-8 border border-gray-100 flex flex-col">
+          <h2 className="text-3xl font-black text-[#2e3d82] mb-8">Send us an Email</h2>
+          
+          <form onSubmit={handleSubmit} className="flex-grow flex flex-col gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-700 italic">Name *</label>
+                <input 
+                  type="text" 
+                  required 
+                  className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 outline-none" 
+                />
               </div>
-
-              {/* Email */}
-              <div className="flex flex-col items-center gap-2">
-                <div className="bg-blue-300 p-3 rounded-full">
-                  <FaEnvelope className="text-blue-600 text-xl" />
-                </div>
-                <p className="text-gray-700 text-sm break-all">
-                  <strong>Email:</strong><br />
-                  <Link to="mailto:kumarsunny919200@gmail.com">
-                    kumarsunny919200@gmail.com
-                  </Link>
-                </p>
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-700 italic">Email *</label>
+                <input 
+                  type="email" 
+                  required 
+                  className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 outline-none" 
+                />
               </div>
-
-              {/* Address */}
-              <div className="flex flex-col items-center gap-2">
-                <div className="bg-blue-300 p-3 rounded-full">
-                  <FaMapMarkerAlt className="text-blue-600 text-xl" />
-                </div>
-                <p className="text-gray-700 text-sm">
-                  <strong>Address:</strong><br />
-                  Delhi, India
-                </p>
-              </div>
-
             </div>
 
-            {/* 🔥 MAP DIV */}
-            <div className="w-full h-[250px] md:h-[300px] rounded-xl overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.255672588097!2d77.08272457528753!3d28.592105775686825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1bae6d0904b7%3A0x938fa4b31f997e05!2sAi.Risezonic!5e0!3m2!1sen!2sin!4v1774012786260!5m2!1sen!2sin"
-                className="w-full h-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-700 italic">subject</label>
+                <input 
+                  type="text" 
+                  className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 outline-none" 
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-700 italic">phone *</label>
+                <input 
+                  type="tel" 
+                  required 
+                  className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 outline-none" 
+                />
+              </div>
             </div>
 
-          </div>
+            <div className="space-y-2 flex-grow">
+              <label className="text-sm font-semibold text-gray-700 italic">Messages</label>
+              <textarea 
+                className="w-full p-2 border border-gray-300 rounded h-48 md:h-full min-h-[150px] focus:border-blue-500 outline-none resize-none" 
+              ></textarea>
+            </div>
 
-
-          {/* Right Side - Form */}
-          {/* Right Side - Form */}
-{/* import BookingInfoPage from './BookingInfoPage'; */}
-
-          <form className="bg-white p-6 rounded-2xl shadow-blue-300 hover:shadow-md space-y-4">
-            <label>Name*</label>
-            <input
-              type="text"
-              placeholder="Enter Your Full Name"
-              className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
-            <label>Email*</label>
-            <input
-              type="email"
-              placeholder="Enter Your Email Address"
-              className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
-            <label>Phone*</label>
-            <input
-              type="tel"
-              placeholder="Enter Your Phone Number"
-              className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
-            <label>Subject</label>
-            <input
-              type="text"
-              placeholder="Subject"
-              className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
-            <label>Message</label>
-            <textarea
-              rows="3"
-              placeholder="Your Message"
-              className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-            ></textarea>
-
-            <button className="w-full bg-blue-600 cursor-pointer text-white py-3 rounded-lg hover:bg-blue-800 transition">
-              Send Message
-            </button>
+            <div className="pt-4">
+              <button 
+                type="submit" 
+                className="bg-[#242f65] text-white px-8 py-3 font-bold hover:bg-blue-900 transition-colors text-sm"
+              >
+                Send Message
+              </button>
+            </div>
           </form>
-
         </div>
-      </section>
-    </>
 
+      </div>
+    </div>
+    <div className="w-full h-[450px]  overflow-hidden shadow-xl border-4 border-white  rounded-2xl">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.2555156173057!2d77.0827245749552!3d28.592110485916162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1bae6d0904b7%3A0x938fa4b31f997e05!2sAi.Risezonic!5e0!3m2!1sen!2sin!4v1774440130187!5m2!1sen!2sin" width="100%" height="450" style={{border:0 }}allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    </>
   );
-}
+};
+
+export default ContactUsPage;
