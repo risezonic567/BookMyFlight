@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoMdMail } from 'react-icons/io';
 
 const Newsletter = () => {
   return (
@@ -12,7 +13,7 @@ const Newsletter = () => {
           </div>
           <div className=" flex flex-col md:flex-row bg-black/10 md:min-w-3xl gap-5 md:gap-10 md:px-10 py-5 rounded-2xl md:rounded-4xl items-center md:p-5 md:justify-between p-2">
             <div className="flex flex-row justify-start gap-5 border-b-1  w-full">
-              <span className="">📩</span>
+              <span className="text-2xl pt-1"><IoMdMail /></span>
               <input 
                 type="email" 
                 placeholder="Your Email" 

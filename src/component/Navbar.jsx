@@ -35,13 +35,13 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex items-center justify-between h-20 max-w-7xl">
         {/* Left: Logo */}
         <div className="flex items-center">
-          <a href="/" className="block">
+          <Link to="/" className="block">
             <img
               src="/images/Book my Flight online logo png.png"
               alt="FlightsChannel Logo"
               className="h-30 md:h-55 w-auto object-contain"
             />
-          </a>
+          </Link>
         </div>
 
         {/* Right Section */}
@@ -49,24 +49,14 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-7 font-semibold text-Lg text-blue-950 mr-10">
-          <Link to="/my-booking">
-            <a
-              href="/search-booking"
-              className="hover:text-blue-900  text-lg transition-colors"
-            >
+          <Link to="/my-booking" className="hover:text-blue-900  text-lg transition-colors">
               My Booking
-            </a>
           </Link>
-          <a href="/blog" className="hover:text-blue-900 text-lg  transition-colors">
-            Blogs
-          </a>
-          <Link to="/packages">
-            <a
-              href="/packages"
-              className="hover:text-blue-900 transition-colors  text-lg"
-            >
+          <Link to="/blog" className="hover:text-blue-900 text-lg  transition-colors">Blogs</Link>
+          
+          <Link to="/packages" className="hover:text-blue-900 transition-colors  text-lg">
               Packages
-            </a>
+            
           </Link>
         </nav>
 

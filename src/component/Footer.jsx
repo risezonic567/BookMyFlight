@@ -1,5 +1,15 @@
 import React from 'react';
+import { FaFacebook, FaInstagram, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+
+const iconTag = [
+  
+  <FaFacebook />,
+  <FaInstagram />,
+  <FaXTwitter />,
+  <FaLinkedin />
+];
+
 
 const Footer = () => {
   return (
@@ -22,7 +32,7 @@ const Footer = () => {
             </div>
             <p className="text-[12px] opacity-80 mb-4 font-medium">FlSot No.: <span className="font-bold">FLST43760</span></p>
             <div className="flex gap-2">
-              {['f', 'i', 't', 'l'].map((icon, index) => (
+              {iconTag.map((icon, index) => (
                 <div key={index} className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 cursor-pointer text-xs font-bold">
                   {icon}
                 </div>
