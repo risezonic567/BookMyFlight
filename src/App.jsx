@@ -14,6 +14,8 @@ import Packages from './pages/Packages';
 import ContactUsPage from './pages/ContactUsPage';
 import AboutUs from './pages/AboutUs';
 import ChatWidget from './pages/ChatWidget';
+import LoginPage from './pages/user/Login';
+import Signup from './pages/user/Singup';
 
 function App() {
   return (
@@ -34,6 +36,10 @@ function App() {
             <Route path='/packages' element={<Packages/>}/>
             <Route path='/contact-us' element={<ContactUsPage/>}/>
             <Route path='/about-us' element={<AboutUs/>}/>
+
+            <Route path='/login' element={<LoginPage/>}/>
+            <Route path='/signup' element={<Signup/>}/>
+
           </Routes>
         </main>
         <Footer />

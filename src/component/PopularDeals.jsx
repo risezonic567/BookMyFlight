@@ -14,7 +14,7 @@ const PopularDeals = () => {
         <div className="flex md:grid md:grid-cols-3  gap-10 overflow-x-auto md:overflow-visible pb-2 ">
           {deals.map((deal, index) => (
             <div key={index} className="flex min-w-[90%] md:min-w-full md:mx-auto items-center bg-white border border-gray-100 p-4 rounded-2xl shadow-sm hover:shadow-xl transition-all group ">
-              <img src={deal.img} alt={deal.title} className="w-24 h-28 rounded-xl object-cover" />
+              <img src={deal.img} alt={deal.title} className="w-[100px] h-[116px] rounded-xl object-cover" />
               <div className="ml-4">
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{deal.title}</p>
                 <h3 className="text-xl font-black text-black leading-tight">{deal.discount}</h3>

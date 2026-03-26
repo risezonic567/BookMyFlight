@@ -5,11 +5,11 @@ import { Phone, Plane, Building2, Car, Binoculars, ChevronDown } from 'lucide-re
 // Isse main component ke bahar rakha hai taaki code clean rahe
 const PackageCard = ({ image, title, days, price }) => (
   <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 group">
-    <div className="relative h-52 overflow-hidden">
+    <div className="relative h-52 border overflow-hidden">
       <img 
         src={image} 
         alt={title} 
-        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+        className="w-[390px] h-[207px] object-cover group-hover:scale-110 transition-transform duration-500" 
       />
     </div>
     <div className="p-6 flex flex-col flex-grow">
@@ -101,7 +101,7 @@ function Packages() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {countries.map((country, i) => (
             <div key={i} className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-lg">
-              <img src={country.img} alt={country.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-110" />
+              <img src={country.img} alt={country.name} className="w-[300px] h-[192px] object-cover transition duration-500 group-hover:scale-110" />
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/50 transition-all">
                 <span className="text-white text-2xl font-black uppercase tracking-widest">{country.name}</span>
               </div>

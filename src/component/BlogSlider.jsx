@@ -74,21 +74,21 @@ const BlogSlider = () => {
         {/* Slider Container */}
         <div 
           ref={scrollRef}
-          className="flex overflow-x-auto scroll-smooth no-scrollbar gap-8"
+          className="flex overflow-x-auto scroll-smooth no-scrollbar gap-8 h-60"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {blogs.map((blog) => (
             <div 
               key={blog.id} 
-              className="flex min-w-full lg:min-w-[calc(50%-16px)] bg-[#f8fafc] rounded-3xl group overflow-hidden transition-all duration-300 hover:shadow-lg"
+              className="flex min-w-full lg:min-w-[calc(50%-16px)] bg-[#f8fafc] rounded-3xl group overflow-hidden transition-all duration-300 hover:shadow-xl border border-black/15 "
             >
               
               {/* Image Section (Left - Exact dimensions) */}
-              <div className="w-[45%] h-auto overflow-hidden shrink-0">
+              <div className="w-[50%] h-auto overflow-hidden  shrink-0 rounded-r-2xl">
                 <img 
                   src={blog.img} 
                   alt={blog.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 rounded-l-3xl" 
+                  className="w-[310px] h-[240px] object-cover rounded-r-2xl group-hover:scale-105 transition-transform duration-700 rounded-l-3xl" 
                 />
               </div>
 
@@ -100,7 +100,7 @@ const BlogSlider = () => {
                   </span>
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-bold text-blue-800 leading-tight mb-4 group-hover:text-blue-600 transition-colors cursor-pointer">
+                <h3 className="text-xl md:text-xl font-bold text-blue-800 leading-tight mb-4 group-hover:text-blue-600 transition-colors cursor-pointer">
                   {blog.title}
                 </h3>
                 

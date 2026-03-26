@@ -1,3 +1,4 @@
+import { User } from "lucide-react";
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -49,12 +50,12 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-7 font-semibold text-Lg text-blue-950 mr-10">
-          <Link to="/my-booking" className="hover:text-blue-900  text-lg transition-colors">
+          <Link to="/my-booking" className="hover:text-blue-900  text-md transition-colors">
               My Booking
           </Link>
-          <Link to="/blog"  className="hover:text-blue-900 text-lg  transition-colors">Blogs</Link>
+          <Link to="/blog"  className="hover:text-blue-900 text-md  transition-colors">Blogs</Link>
           
-          <Link to="/packages" className="hover:text-blue-900 transition-colors  text-lg">
+          <Link to="/packages" className="hover:text-blue-900 transition-colors  text-md">
               Packages  
           </Link>
         </nav>
@@ -80,6 +81,12 @@ const Navbar = () => {
               +1-844-609-9922
             </span>
           </a>
+          <span className="font-bold text-[14px] md:text-[15px] text-black hover:text-black ">
+          <Link to="/login">
+              <User/>
+          
+          </Link>
+            </span>
 
           <div className="h-8 w-[1px] bg-gray-200 hidden sm:block"></div>
 
