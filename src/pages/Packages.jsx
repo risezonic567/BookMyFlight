@@ -39,22 +39,22 @@ const PackageCard = ({ image, title, days, price }) => (
 // --- 2. Main Component ---
 function Packages() {
   const worldwideData = [
-    { title: "European Highlights Tour", days: "10-14 Days", price: "3499", image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600" },
-    { title: "Tropical Paradise: Maldives", days: "7-10 Days", price: "1799", image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=600" },
-    { title: "Australia Adventure", days: "6D/5N", price: "2099", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&w=600" }
+    { title: "European Highlights Tour", days: "10-14 Days", price: "3499", image: "/packages/Europe image.jpg.jpeg" },
+    { title: "Tropical Paradise: Maldives", days: "7-10 Days", price: "1799", image: "/packages/Maldives.jpg.jpeg" },
+    { title: "Australia Adventure", days: "6D/5N", price: "2099", image: "/packages/Australia.jpg.jpeg" }
   ];
 
   const honeymoonData = [
-    { title: "Greece - Romantic Getaway", days: "7D/6N", price: "3499", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600" },
-    { title: "Italy - Honeymoon Special", days: "8D/7N", price: "1799", image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=600" },
-    { title: "Paris - Majestic Nights", days: "6D/5N", price: "2099", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600" }
+    { title: "Greece - Romantic Getaway", days: "7D/6N", price: "3499", image: "/packages/Honeymoon Packages Greece.jpg.jpeg" },
+    { title: "Italy - Honeymoon Special", days: "8D/7N", price: "1799", image: "/packages/Honeymoon Packages italy.jpg.jpeg" },
+    { title: "Paris - Majestic Nights", days: "6D/5N", price: "2099", image: "/packages/Honeymoon Packages paris.jpg.jpeg" }
   ];
 
   const countries = [
-    { name: "Italy", img: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=400" },
-    { name: "France", img: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=400" },
-    { name: "Thailand", img: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=400" },
-    { name: "Greece", img: "https://images.unsplash.com/photo-1503152397458-71280d566f07?auto=format&fit=crop&w=400" },
+    { name: "Italy", img: "/packages/Countries we serve in italy.jpg.jpeg" },
+    { name: "France", img: "/packages/Countries we serve in France.jpg.jpeg" },
+    { name: "Thailand", img: "/packages/Countries we serve in thailand.jpg.jpeg" },
+    { name: "Greece", img: "/packages/Countries we serve in Greece.jpg.jpeg" },
   ];
 
   return (

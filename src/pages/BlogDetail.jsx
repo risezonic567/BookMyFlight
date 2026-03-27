@@ -33,11 +33,7 @@ export default function BlogDetail() {
             </Helmet>
             <div className="relative">
                 <div className="absolute inset-0 bg-black opacity-20 z-0"></div>
-                <img
-                    className="w-full h-[400px]"
-                    src="http://blogcrm.flightschannel.com/images/blog/1blog-image (24).jpg"
-                    alt="Blog Banner"
-                />
+                
             </div>
 
             <div className="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-3 gap-12">

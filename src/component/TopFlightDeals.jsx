@@ -4,19 +4,19 @@ const TopFlightDeals = () => {
   const [dealType, setDealType] = useState("domestic")
 
   const domesticFlight = [
-    { route: "Los Angeles to Las Vegas", price: "136.89", date: "07 Apr 26", img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=100" },
-    { route: "New York to Atlanta", price: "313.90", date: "07 Apr 26", img: "https://images.unsplash.com/photo-1543716091-a843c066624c?w=100" },
-    { route: "Washington to Miami", price: "253.89", date: "07 Apr 26", img: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=100" },
-    { route: "New York to Orlando", price: "373.89", date: "07 Apr 26", img: "https://images.unsplash.com/photo-1597466765990-64ad1c35dafc?w=100" },
-    { route: "Atlanta to Las vegas", price: "278.89", date: "08 Apr 26", img: "https://images.unsplash.com/photo-1597466765990-64ad1c35dafc?w=100" },
+    { route: "Los Angeles to Las Vegas", price: "136.89", date: "07 Apr 26", img: "/domesticFlight/Domestic Flight deals -  las vegas - Copy.jpg.jpeg" },
+    { route: "New York to Atlanta", price: "313.90", date: "07 Apr 26", img: "/domesticFlight/Domestic Flight deals - Atlanta - Copy.jpg.jpeg" },
+    { route: "Washington to Miami", price: "253.89", date: "07 Apr 26", img: "/domesticFlight/Domestic Flight deals -  Miami - Copy.jpg.jpeg" },
+    { route: "New York to Orlando", price: "373.89", date: "07 Apr 26", img: "/domesticFlight/Domestic Flight deals - Orlando - Copy.jpg.jpeg" },
+    { route: "Atlanta to Las vegas", price: "278.89", date: "08 Apr 26", img: "/domesticFlight/Las Vegas.jpg.jpeg" },
   ];
 
  const internationalFlight = [
-  {route: "Chicago to Dublin", price: "709.9", date:"09 Apr 26", img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=100"},
-  {route: "New York to London", price: "505.7", date:"09 Apr 26", img:"https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=100"},
-  {route: "Los Angeles to Tokyo", price: "780.7", date:"09 Apr 26", img:"https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=100"},
-  {route: "Las Vegas to Cancun", price:"267.07", date:"09 Apr 26", img:"https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=100"},
-  {route:"Atlanta to Dubai", price:"1067.60", date:"09 Apr 26", img:"https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=100"}
+  {route: "Chicago to Dublin", price: "709.9", date:"09 Apr 26", img: "/internationalFlight/International Flight deals Dublin - Copy.jpg.jpeg"},
+  {route: "New York to London", price: "505.7", date:"09 Apr 26", img:"/internationalFlight/International Flight deals London - Copy.jpg.jpeg"},
+  {route: "Los Angeles to Tokyo", price: "780.7", date:"09 Apr 26", img:"/internationalFlight/International Flight deals Tokyo - Copy.jpg.jpeg"},
+  {route: "Las Vegas to Cancun", price:"267.07", date:"09 Apr 26", img:"/internationalFlight/International Flight deals Cancun.jpg.jpeg"},
+  {route:"Atlanta to Dubai", price:"1067.60", date:"09 Apr 26", img:"/internationalFlight/International Flight deals Dubai - Copy.jpg.jpeg"}
  ];
 
  const deals = dealType === "domestic" ? domesticFlight : internationalFlight;

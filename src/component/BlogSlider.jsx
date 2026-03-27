@@ -9,28 +9,28 @@ const BlogSlider = () => {
       id: 1, 
       title: "The most amazing waterfalls on different continents", 
       desc: "Waterfalls are the best natural sights for most, though it&rsquo;s best to see them...",
-      img: "https://images.unsplash.com/photo-1546268060-2592ff93ee24?w=600", // Waterfall img
+      img: "/blog/Two.jpeg", // Waterfall img
       cat: "DESTINATION"
     },
     { 
       id: 2, 
       title: "The best skyscrapers around the world for those...", 
       desc: "The architecture in the last century has changed a lot from that of the previous...",
-      img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600", // City skyline img
+      img: "/blog/Three.jpeg", // City skyline img
       cat: "ADVENTURES"
     },
     { 
       id: 3, 
       title: "The most amazing waterfalls on different continents", 
       desc: "Waterfalls are the best natural sights for most, though it&rsquo;s best to see them...",
-      img: "https://images.unsplash.com/photo-1546268060-2592ff93ee24?w=600", // Waterfall img
+      img: "/blog/One.jpeg", // Waterfall img
       cat: "TRAVEL FOODIES"
     },
     { 
       id: 4, 
       title: "The best skyscrapers around the world for those...", 
       desc: "The architecture in the last century has changed a lot from that of the previous...",
-      img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600", // City skyline img
+      img: "/blog/Four.jpeg", // City skyline img
       cat: "SEASON GATEWAY  "
     },
     
@@ -88,7 +88,7 @@ const BlogSlider = () => {
                 <img 
                   src={blog.img} 
                   alt={blog.title} 
-                  className="w-[310px] h-[240px] object-cover rounded-r-2xl group-hover:scale-105 transition-transform duration-700 rounded-l-3xl" 
+                  className="w-full h-full object-cover rounded-r-2xl group-hover:scale-105 transition-transform duration-700 rounded-l-3xl" 
                 />
               </div>
 

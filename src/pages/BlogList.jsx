@@ -50,11 +50,7 @@ export default function BlogList() {
             {/* Banner */}
             <div className="relative">
                 <div className="absolute inset-0 bg-black opacity-20 z-0"></div>
-                <img
-                    className="w-full"
-                    src="https://blogcrm.flightschannel.com/images/blog/65Europe.webp"
-                    alt="Blog Banner"
-                />
+                
             </div>
             <section className="py-16 px-6 max-w-7xl mx-auto font-sans">
       {/* Section Title */}
@@ -96,7 +92,7 @@ export default function BlogList() {
             <span className="text-gray-500 font-medium text-sm">16 Oct 2023</span>
             
             <button className="flex items-center gap-2 bg-[#1F3F63] text-white px-5 py-2.5 rounded-lg font-bold hover:bg-[#1a3554] transition shadow-md group">
-              <Link to="/blog/home-interior-trends-2026-italian-marble-beige-marble-italian-tiles">Read More</Link>
+              <Link to="/blog/book-my-flight-amazing-travel-destinations-world">Read More</Link>
               <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
