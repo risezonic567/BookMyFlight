@@ -34,7 +34,7 @@ const blogs = [
       </p>
 
       <h2 className="text-2xl font-semibold mt-10 mb-3">
-        Understanding Different Types of Flights
+        Understanding Different Types of Flights.
       </h2>
 
       <p>
