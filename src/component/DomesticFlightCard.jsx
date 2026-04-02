@@ -1,12 +1,11 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export default function FlightCard({ flight, index }) {
+export default function DomesticFlightCard({ flight, index }) {
 
  const cardRef = useRef();
 
  useEffect(() => {
-  if (!cardRef.current) return;
 
   gsap.from(cardRef.current, {
    opacity: 0,
@@ -16,9 +15,7 @@ export default function FlightCard({ flight, index }) {
    ease: "power3.out"
   });
 
- }, [index]);
-
- if (!flight) return null;
+ }, []);
 
  return (
   <div
@@ -30,7 +27,6 @@ export default function FlightCard({ flight, index }) {
 
     <img
      src={flight.image}
-     alt={flight.from}
      className="w-14 h-14 rounded-full object-cover"
     />
 
@@ -47,6 +43,7 @@ export default function FlightCard({ flight, index }) {
     </div>
 
    </div>
+
 
    <div className="text-right">
 

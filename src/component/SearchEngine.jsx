@@ -1,375 +1,199 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PassengerPicker from './PassengerPicker';
 import { useNavigate } from 'react-router-dom';
+import { Search, Plus, Trash2, MapPin, Plane } from 'lucide-react';
+
+const AIRPORTS = [
+  { city: 'Delhi', code: 'DEL', name: 'Indira Gandhi Intl' },
+  { city: 'Mumbai', code: 'BOM', name: 'Chhatrapati Shivaji Intl' },
+  { city: 'Bangalore', code: 'BLR', name: 'Kempegowda Intl' },
+  { city: 'Dubai', code: 'DXB', name: 'Dubai International' },
+  { city: 'London', code: 'LHR', name: 'Heathrow Airport' },
+  { city: 'New York', code: 'JFK', name: 'John F. Kennedy Intl' },
+];
 
 const SearchEngine = () => {
   const navigate = useNavigate();
   const [tripType, setTripType] = useState('round-trip');
+  const [from, setFrom] = useState({ city: '', code: '' });
+  const [to, setTo] = useState({ city: '', code: '' });
+  const [departureDate, setDepartureDate] = useState('');
+  const [returnDate, setReturnDate] = useState('');
+  const [showFromSuggest, setShowFromSuggest] = useState(false);
+  const [showToSuggest, setShowToSuggest] = useState(false);
 
-  const cities = [
-    { name: "New Delhi", code: "DEL", country: "India" },
-    { name: "Mumbai", code: "BOM", country: "India" },
-    { name: "New York", code: "JFK", country: "USA" },
-    { name: "London", code: "LHR", country: "UK" },
-    { name: "Dubai", code: "DXB", country: "UAE" },
-  ];
-  
-  const [fromQuery, setFromQuery] = useState('');
-  const [toQuery, setToQuery] = useState('');
-  const [showFromList, setShowFromList] = useState(false);
-  const [showToList, setShowToList] = useState(false);
+  const [multiCityFlights, setMultiCityFlights] = useState([
+    { from: '', to: '', date: '' },
+    { from: '', to: '', date: '' }
+  ]);
 
-  const filteredFrom = cities.filter(c => 
-    c.name.toLowerCase().includes(fromQuery.toLowerCase()) || 
-    c.code.toLowerCase().includes(fromQuery.toLowerCase())
-  );
-
-  const filteredTo = cities.filter(c => 
-    c.name.toLowerCase().includes(toQuery.toLowerCase()) || 
-    c.code.toLowerCase().includes(toQuery.toLowerCase())
-  );
-
-  // SEARCH CLICK HANDLER
-  const handleSearch = (e) => {
+  const handleFinalSearch = (e) => {
     e.preventDefault();
-    if(!fromQuery || !toQuery) {
-        alert("Please select cities!");
-        return;
+    if (!from.code || !to.code || !departureDate) {
+      alert("Please fill all details!");
+      return;
     }
-    navigate('/search-results');
+
+    const searchData = {
+      type: tripType,
+      origin: from,
+      destination: to,
+      departure: departureDate,
+      return: tripType === 'round-trip' ? returnDate : null,
+      passengers: JSON.parse(localStorage.getItem('passengers')) || { adult: 1, child: 0, infant: 0 },
+      multiCity: tripType === 'multi-city' ? multiCityFlights : null
+    };
+
+    navigate('/search-results', { state: { searchData } });
   };
 
-  useEffect(() => {
-      window.scroll(0, 0);
-    });
+  const filteredAirports = (query) => 
+    AIRPORTS.filter(a => a.city.toLowerCase().includes(query.toLowerCase()) || a.code.toLowerCase().includes(query.toLowerCase()));
 
   return (
-    <section className="relative min-h-[470px] flex items-center justify-center py-12 px-4 bg-cover bg-center" 
-             style={{ backgroundImage: "url('/images/banner (book myflight).jpg.jpeg')" }}>
+    <section className="relative min-h-[600px] flex items-center justify-center py-12 px-4 bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/banner (book myflight).jpg.jpeg')" }}>
       
-      <div className="absolute inset-0 bg-black/30">
-      <div className='flex flex-col max-w-7xl mx-30 pt-17 '>
-        <h1 className="text-4xl font-bold text-white pb-2">Explore the Skies</h1>
-        <p className='text-white'>Your Ultimate Flight Booking Search Engine for Seamless Travel Experiences!</p>
-      </div>
-      </div>
-      
-      <div className="relative z-10 w-full max-w-7xl bg- backdrop-blur-sm rounded-xl shadow-2xl p-6 md:p-8 bg-black/50 backdrop-blur-md">
-        
+      <div className="absolute inset-0 bg-black/50"></div>
 
-        {/* Trip Type Tabs */}
-        <div className="flex space-x-6 mb-4 ">
-          {['one-way', 'round-trip', 'multi-city'].map((type) => (
-            <button key={type} onClick={() => setTripType(type)}
-              className={`border bg-transparent   p-1 m-2 pb-2 px-1 capitalize transition-all ${tripType === type ? ' text-blue-800  font-semibold bg-white' : 'text-white/90'} md:px-4 md:rounded-2xl rounded-lg  text-sm px-3 cursor-pointer`}>
-              {type.replace('-', ' ')}
-            </button>
-          ))}
+      <div className="relative z-10 w-full max-w-7xl">
+        <div className="mb-8 text-left">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Explore the Skies</h1>
+          <p className="text-white/90 text-lg">Book your next adventure with ease.</p>
         </div>
 
-        {tripType !== 'multi-city' ? (
-          <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
-            
-            {/* FROM */}
-            <div className="relative flex flex-col space-y-2">
-              {/* <label className="text-sm font-semibold text-gray-700">From</label> */}
-              <input 
-                type="text" 
-                value={fromQuery}
-                onChange={(e) => {setFromQuery(e.target.value); setShowFromList(true)}}
-                onFocus={() => setShowFromList(true)}
-                placeholder="Where From" 
-                className="p-3 border rounded-lg focus:ring-2 bg-white text-black focus:ring-blue-500 outline-none w-full" 
-              />
-              {showFromList && fromQuery && (
-                <ul className="absolute top-full left-0 w-full bg-white border shadow-xl rounded-lg mt-1 z-[100] max-h-48 overflow-y-auto">
-                  {filteredFrom.map(city => (
-                    <li key={city.code} 
-                        onClick={() => {setFromQuery(`${city.name} (${city.code})`); setShowFromList(false)}}
-                        className="p-3 hover:bg-blue-50 cursor-pointer border-b last:border-0 flex justify-between">
-                      <span className="text-sm">{city.name}</span>
-                      <span className="font-bold text-blue-600 text-sm">{city.code}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-
-            {/* TO */}
-            <div className="relative flex flex-col space-y-2">
-              {/* <label className="text-sm font-semibold text-gray-700">To</label> */}
-              <input 
-                type="text" 
-                value={toQuery}
-                onChange={(e) => {setToQuery(e.target.value); setShowToList(true)}}
-                onFocus={() => setShowToList(true)}
-                placeholder="Where To" 
-                className="p-3 border bg-white text-black rounded-lg focus:ring-2 focus:ring-blue-500 outline-none w-full" 
-              />
-              {showToList && toQuery && (
-                <ul className="absolute top-full left-0 w-full bg-white border shadow-xl rounded-lg mt-1 z-[100] max-h-48 overflow-y-auto">
-                  {filteredTo.map(city => (
-                    <li key={city.code} 
-                        onClick={() => {setToQuery(`${city.name} (${city.code})`); setShowToList(false)}}
-                        className="p-3 hover:bg-blue-50 cursor-pointer border-b last:border-0 flex justify-between">
-                      <span className="text-sm">{city.name}</span>
-                      <span className="font-bold text-blue-600 text-sm">{city.code}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-
-            <div className="flex flex-col space-y-2">
-              {/* <label className="text-sm font-semibold text-gray-700">Date</label> */}
-              <input type="date" required className="p-3 border rounded-lg outline-none w-full bg-white" />
-            </div>
-
-            <div className="flex flex-col space-y-2">
-              <PassengerPicker />
-            </div>
-
-            <button type="submit" className="bg-blue-600 text-white font-bold py-3.5 rounded-lg hover:bg-blue-700 transition shadow-lg transform active:scale-95">
-              SEARCH 🔍
-            </button>
-          </form>
-        ) : (
-          <div className="p-10 text-center border-2 border-dashed rounded-lg bg-gray-50 text-gray-500 font-medium">
-             ✈️ Multi-City booking is currently under maintenance.
+        <div className="bg-black/60 backdrop-blur-xl rounded-3xl shadow-2xl p-5 md:p-8 border border-white/10 w-full">
+          
+          {/* Trip Type Tabs - Flex wrap ensures they don't break on mobile */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {['one-way', 'round-trip', 'multi-city'].map((type) => (
+              <button 
+                key={type} 
+                type="button"
+                onClick={() => setTripType(type)}
+                className={`px-5 py-2 capitalize transition-all font-bold text-xs md:text-sm rounded-full border
+                  ${tripType === type ? 'bg-blue-600 text-white border-blue-600' : 'bg-white/10 text-white border-white/20 hover:bg-white/20'}`}
+              >
+                {type.replace('-', ' ')}
+              </button>
+            ))}
           </div>
-        )}
+
+          <form onSubmit={handleFinalSearch}>
+            {tripType !== 'multi-city' ? (
+              <div className="flex flex-col lg:flex-row gap-4 items-end">
+                
+                {/* FROM */}
+                <div className="w-full lg:flex-1 relative">
+                  <label className="text-[10px] text-white/70 font-bold uppercase mb-1 ml-1 block">From</label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3 top-3.5 text-blue-500 w-5 h-5" />
+                    <input 
+                      type="text" 
+                      value={from.city}
+                      onChange={(e) => {setFrom({city: e.target.value, code: ''}); setShowFromSuggest(true)}}
+                      onFocus={() => setShowFromSuggest(true)}
+                      placeholder="Departure City" 
+                      className="w-full pl-10 pr-4 py-3 bg-white text-black font-bold rounded-xl outline-none text-sm md:text-base" 
+                    />
+                  </div>
+                  {showFromSuggest && from.city.length > 0 && (
+                    <div className="absolute z-50 w-full bg-white mt-1 rounded-xl shadow-2xl overflow-hidden">
+                      {filteredAirports(from.city).map((air, i) => (
+                        <div key={i} className="p-3 hover:bg-blue-50 cursor-pointer text-black border-b last:border-0"
+                             onClick={() => {setFrom({city: air.city, code: air.code}); setShowFromSuggest(false)}}>
+                          <div className="font-bold">{air.city} ({air.code})</div>
+                          <div className="text-[10px] text-gray-500">{air.name}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* TO */}
+                <div className="w-full lg:flex-1 relative">
+                  <label className="text-[10px] text-white/70 font-bold uppercase mb-1 ml-1 block">To</label>
+                  <div className="relative">
+                    <Plane className="absolute left-3 top-3.5 text-blue-500 w-5 h-5 rotate-90" />
+                    <input 
+                      type="text" 
+                      value={to.city}
+                      onChange={(e) => {setTo({city: e.target.value, code: ''}); setShowToSuggest(true)}}
+                      onFocus={() => setShowToSuggest(true)}
+                      placeholder="Destination City" 
+                      className="w-full pl-10 pr-4 py-3 bg-white text-black font-bold rounded-xl outline-none text-sm md:text-base" 
+                    />
+                  </div>
+                  {showToSuggest && to.city.length > 0 && (
+                    <div className="absolute z-50 w-full bg-white mt-1 rounded-xl shadow-2xl overflow-hidden">
+                      {filteredAirports(to.city).map((air, i) => (
+                        <div key={i} className="p-3 hover:bg-blue-50 cursor-pointer text-black border-b last:border-0"
+                             onClick={() => {setTo({city: air.city, code: air.code}); setShowToSuggest(false)}}>
+                          <div className="font-bold">{air.city} ({air.code})</div>
+                          <div className="text-[10px] text-gray-500">{air.name}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* DATES - Fixed Round Trip stretching */}
+                <div className={`flex flex-row gap-3 w-full ${tripType === 'round-trip' ? 'lg:w-[350px]' : 'lg:w-[180px]'}`}>
+                  <div className="flex-1">
+                    <label className="text-[10px] text-white/70 font-bold uppercase mb-1 ml-1 block">Departure</label>
+                    <input type="date" required value={departureDate} onChange={(e) => setDepartureDate(e.target.value)} className="w-full p-3 bg-white text-black font-bold rounded-xl outline-none text-sm" />
+                  </div>
+                  {tripType === 'round-trip' && (
+                    <div className="flex-1">
+                      <label className="text-[10px] text-white/70 font-bold uppercase mb-1 ml-1 block">Return</label>
+                      <input type="date" required value={returnDate} onChange={(e) => setReturnDate(e.target.value)} className="w-full p-3 bg-white text-black font-bold rounded-xl outline-none text-sm" />
+                    </div>
+                  )}
+                </div>
+
+                {/* TRAVELLERS */}
+                <div className="w-full lg:w-[200px]">
+                  <label className="text-[10px] text-white/70 font-bold uppercase mb-1 ml-1 block">Travellers</label>
+                  <PassengerPicker />
+                </div>
+
+                {/* SEARCH BUTTON */}
+                <button type="submit" className="w-full lg:w-[60px] h-[52px] bg-blue-600 text-white rounded-xl shadow-xl flex items-center justify-center hover:bg-blue-700 transition-all shrink-0">
+                  <Search size={24} className="hidden lg:block" />
+                  <span className="lg:hidden font-bold">Search Flights</span>
+                </button>
+              </div>
+
+            ) : (
+              /* MULTI-CITY */
+              <div className="space-y-4">
+                {multiCityFlights.map((flight, index) => (
+                  <div key={index} className="flex flex-col md:flex-row gap-3 p-4 bg-white/5 rounded-2xl border border-white/10 items-end">
+                    <div className="w-full md:flex-[2]">
+                       <input type="text" placeholder="From" className="w-full p-3 rounded-xl bg-white text-black font-bold text-sm" />
+                    </div>
+                    <div className="w-full md:flex-[2]">
+                       <input type="text" placeholder="To" className="w-full p-3 rounded-xl bg-white text-black font-bold text-sm" />
+                    </div>
+                    <div className="w-full md:flex-1">
+                       <input type="date" className="w-full p-3 rounded-xl bg-white text-black font-bold text-sm" />
+                    </div>
+                    {index > 1 && (
+                      <button type="button" onClick={() => setMultiCityFlights(multiCityFlights.filter((_, i) => i !== index))} className="p-3 text-red-400 self-center md:self-end"><Trash2 size={20} /></button>
+                    )}
+                  </div>
+                ))}
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-white/10 pt-4">
+                  <button type="button" onClick={() => setMultiCityFlights([...multiCityFlights, {from:'', to:'', date:''}])} className="text-white text-sm font-bold flex items-center gap-2"> <Plus size={16}/> Add City</button>
+                  <button type="submit" className="w-full sm:w-auto bg-blue-600 px-8 py-3 rounded-xl text-white font-bold hover:bg-blue-700">Search Flights</button>
+                </div>
+              </div>
+            )}
+          </form>
+        </div>
       </div>
     </section>
   );
 };
 
 export default SearchEngine;
-
-
-
-
-
-
-
-
-
-// import React, { useEffect, useState } from 'react';  
-// import PassengerPicker from './PassengerPicker';
-// import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
-
-// const SearchEngine = () => {
-//   const navigate = useNavigate();
-//   const [tripType, setTripType] = useState('round-trip');
-//   const [loading, setLoading] = useState(false);
-
-//   const [fromQuery, setFromQuery] = useState('');
-//   const [toQuery, setToQuery] = useState('');
-//   const [fromResults, setFromResults] = useState([]); 
-//   const [toResults, setToResults] = useState([]);
-  
-//   const [selectedFromCode, setSelectedFromCode] = useState('');
-//   const [selectedToCode, setSelectedToCode] = useState('');
-//   const [departureDate, setDepartureDate] = useState('');
-  
-//   const [showFromList, setShowFromList] = useState(false);
-//   const [showToList, setShowToList] = useState(false);
-
-//   // Sabse powerful function jo kisi bhi API structure se data nikal lega
-//   const getAirportInfo = (item) => {
-//     const title = 
-//       item?.presentation?.title || 
-//       item?.navigation?.relevantHotelParams?.localizedName || 
-//       item?.navigation?.relevantFlightParams?.localizedName ||
-//       item?.name || 
-//       "Airport";
-
-//     const subtitle = 
-//       item?.presentation?.subtitle || 
-//       item?.navigation?.relevantHotelParams?.cityName || 
-//       item?.address?.cityName ||
-//       "Global City";
-
-//     const skyId = 
-//       item?.skyId || 
-//       item?.navigation?.entityId || 
-//       item?.iataCode || 
-//       "";
-
-//     return { title, subtitle, skyId };
-//   };
-
-//   // LIVE AIRPORT SEARCH - FROM
-//   useEffect(() => {
-//     const timeoutId = setTimeout(async () => {
-//       if (fromQuery.length > 2 && !selectedFromCode) {
-//         try {
-//           const res = await axios.get(`http://localhost:5000/api/flights/airports?query=${fromQuery}`);
-//           // Deep check for Array location in response
-//           const data = Array.isArray(res.data) ? res.data : (res.data?.data || []);
-//           setFromResults(data);
-//           setShowFromList(true);
-//           console.log("res",res)
-//         } catch (err) { 
-//           console.error("Fetch error:", err);
-//           setFromResults([]); 
-//         }
-//       }
-//     }, 500);
-//     return () => clearTimeout(timeoutId);
-//   }, [fromQuery, selectedFromCode]);
-
-//   // LIVE AIRPORT SEARCH - TO
-//   useEffect(() => {
-//     const timeoutId = setTimeout(async () => {
-//       if (toQuery.length > 2 && !selectedToCode) {
-//         try {
-//           const res = await axios.get(`http://localhost:5000/api/flights/airports?query=${toQuery}`);
-//           const data = Array.isArray(res.data) ? res.data : (res.data?.data || []);
-//           setToResults(data);
-//           setShowToList(true);
-//         } catch (err) { 
-//           console.error("Fetch error:", err);
-//           setToResults([]); 
-//         }
-//       }
-//     }, 500);
-//     return () => clearTimeout(timeoutId);
-//   }, [toQuery, selectedToCode]);
-
-//   const handleSearch = async (e) => {
-//     e.preventDefault();
-//     if(!selectedFromCode || !selectedToCode || !departureDate) {
-//         alert("Please select airports from the dropdown suggestions!");
-//         return;
-//     }
-//     setLoading(true);
-//     try {
-//       const response = await axios.get(`http://localhost:5000/api/flights/search`, {
-//         params: { source: selectedFromCode, destination: selectedToCode, date: departureDate }
-//       });
-//       navigate('/search-results', { 
-//         state: { 
-//           flights: response.data?.data?.itineraries || [], 
-//           searchDetails: { fromQuery, toQuery, departureDate, selectedFromCode, selectedToCode } 
-//         } 
-//       });
-//     } catch (error) {
-//       alert("Search failed. Ensure backend is running.");
-//     }
-//     setLoading(false);
-//   };
-
-//   return (
-//     <section className="relative min-h-[470px] flex items-center justify-center py-12 px-4 bg-cover bg-center" 
-//              style={{ backgroundImage: "url('/images/banner (book myflight).jpg.jpeg')" }}>
-      
-//       <div className="absolute inset-0 bg-black/40" />
-      
-//       <div className="relative z-10 w-full max-w-7xl bg-black/50 backdrop-blur-lg rounded-xl shadow-2xl p-6 md:p-8 border border-white/10">
-        
-//         <div className="flex space-x-6 mb-6">
-//           {['one-way', 'round-trip', 'multi-city'].map((type) => (
-//             <button key={type} onClick={() => setTripType(type)}
-//               className={`px-4 py-2 capitalize transition-all rounded-full text-xs font-bold ${tripType === type ? 'bg-blue-600 text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-//               {type.replace('-', ' ')}
-//             </button>
-//           ))}
-//         </div>
-
-//         {tripType !== 'multi-city' ? (
-//           <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
-            
-//             {/* FROM */}
-//             <div className="relative flex flex-col space-y-2">
-//               <label className="text-white text-xs font-semibold ml-1">Flying From</label>
-//               <input 
-//                 type="text" 
-//                 value={fromQuery}
-//                 onChange={(e) => {setFromQuery(e.target.value); setSelectedFromCode(''); setShowFromList(true)}}
-//                 placeholder="Where From?" 
-//                 className="p-3.5 border-none rounded-lg bg-white text-black outline-none w-full shadow-inner" 
-//               />
-//               {showFromList && fromResults.length > 0 && (
-//                 <ul className="absolute top-[110%] left-0 w-full bg-white border shadow-2xl rounded-xl z-[100] max-h-64 overflow-y-auto">
-//                   {fromResults.map((item, idx) => {
-//                     const info = getAirportInfo(item);
-//                     return (
-//                       <li key={idx} 
-//                           onClick={() => {
-//                               setFromQuery(info.title); 
-//                               setSelectedFromCode(info.skyId);
-//                               setShowFromList(false);
-//                           }}
-//                           className="p-4 hover:bg-blue-50 cursor-pointer border-b last:border-0 flex justify-between items-center text-black">
-//                         <div className="flex flex-col text-left">
-//                           <span className="font-bold text-sm">{info.title}</span>
-//                           <span className="text-[10px] text-gray-500 uppercase">{info.subtitle}</span>
-//                         </div>
-//                         <span className="font-black text-blue-600 text-xs bg-blue-50 px-2 py-1 rounded">{info.skyId}</span>
-//                       </li>
-//                     );
-//                   })}
-//                 </ul>
-//               )}
-//             </div>
-
-//             {/* TO */}
-//             <div className="relative flex flex-col space-y-2">
-//               <label className="text-white text-xs font-semibold ml-1">Flying To</label>
-//               <input 
-//                 type="text" 
-//                 value={toQuery}
-//                 onChange={(e) => {setToQuery(e.target.value); setSelectedToCode(''); setShowToList(true)}}
-//                 placeholder="Where To?" 
-//                 className="p-3.5 border-none rounded-lg bg-white text-black outline-none w-full shadow-inner" 
-//               />
-//               {showToList && toResults.length > 0 && (
-//                 <ul className="absolute top-[110%] left-0 w-full bg-white border shadow-2xl rounded-xl z-[100] max-h-64 overflow-y-auto">
-//                   {toResults.map((item, idx) => {
-//                     const info = getAirportInfo(item);
-//                     return (
-//                       <li key={idx} 
-//                           onClick={() => {
-//                               setToQuery(info.title); 
-//                               setSelectedToCode(info.skyId);
-//                               setShowToList(false);
-//                           }}
-//                           className="p-4 hover:bg-blue-50 cursor-pointer border-b last:border-0 flex justify-between items-center text-black">
-//                         <div className="flex flex-col text-left">
-//                           <span className="font-bold text-sm">{info.title}</span>
-//                           <span className="text-[10px] text-gray-500 uppercase">{info.subtitle}</span>
-//                         </div>
-//                         <span className="font-black text-blue-600 text-xs bg-blue-50 px-2 py-1 rounded">{info.skyId}</span>
-//                       </li>
-//                     );
-//                   })}
-//                 </ul>
-//               )}
-//             </div>
-
-//             <div className="flex flex-col space-y-2">
-//               <label className="text-white text-xs font-semibold ml-1">Departure Date</label>
-//               <input type="date" required value={departureDate} onChange={(e) => setDepartureDate(e.target.value)} className="p-3.5 border-none rounded-lg bg-white text-black w-full shadow-inner" />
-//             </div>
-
-//             <div className="flex flex-col space-y-2 text-black">
-//               <label className="text-white text-xs font-semibold ml-1">Travellers</label>
-//               <PassengerPicker />
-//             </div>
-
-//             <button type="submit" disabled={loading} className="bg-blue-600 text-white font-black py-4 rounded-lg hover:bg-blue-700 transition transform active:scale-95 shadow-lg disabled:bg-gray-400 h-[52px]">
-//               {loading ? '...' : 'SEARCH FLIGHTS'}
-//             </button>
-//           </form>
-//         ) : (
-//           <div className="p-10 text-center border-2 border-dashed border-white/20 rounded-lg bg-white/5 text-white font-medium">
-//               ✈️ Multi-City booking is currently under maintenance.
-//           </div>
-//         )}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default SearchEngine;

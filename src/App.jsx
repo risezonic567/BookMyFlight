@@ -19,6 +19,10 @@ import Signup from './pages/user/Singup';
 import SearchEngine from './component/SearchEngine';
 import Booking from './pages/Booking';
 import Confirmation from './pages/Confirmation';
+import APISearchPage from './pages/APISearchPage';
+import APIResultPage from './pages/APIResultPage';
+import APIDetailedPage from './pages/APIDetailedPage';
+import DomesticFlightPage from './pages/DomesticFlightPage';
 
 function App() {
   return (
@@ -44,6 +48,10 @@ function App() {
             <Route path='/signup' element={<Signup/>}/>
             <Route path="/booking-api" element={<Booking />} />
             <Route path="/confirmation" element={<Confirmation />} />
+            <Route path='/api-search-page'element={<APISearchPage/>}/>
+            <Route path='/api-result-page'element={<APIResultPage/>}/>
+            <Route path='/api-detailed-page'element={<APIDetailedPage/>}/>
+            <Route path="/domestic-flights" element={<DomesticFlightPage />} />
           </Routes>
         </main>
         <Footer />
