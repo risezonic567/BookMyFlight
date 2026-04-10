@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Phone, Plane, Building2, Car, Binoculars, ChevronDown } from 'lucide-react';
 
 // --- 1. Sub-Component: Package Card ---
@@ -38,6 +38,11 @@ const PackageCard = ({ image, title, days, price }) => (
 
 // --- 2. Main Component ---
 function Packages() {
+ 
+  useEffect(() => {
+    window.scrollTo(0,0)
+  },[])
+
   const worldwideData = [
     { title: "European Highlights Tour", days: "10-14 Days", price: "3499", image: "/packages/Europe image.jpg.jpeg" },
     { title: "Tropical Paradise: Maldives", days: "7-10 Days", price: "1799", image: "/packages/Maldives.jpg.jpeg" },

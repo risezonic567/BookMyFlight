@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FAQSection from '../component/FAQSection'
 import Testimonial from '../component/Testimonial'
 
 function AboutUs() {
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  },[])
   return (
    <>
    <section>

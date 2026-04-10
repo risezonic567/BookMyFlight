@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Phone, Mail, MessageSquare, MapPin } from 'lucide-react';
 
@@ -7,6 +7,10 @@ const ContactUsPage = () => {
     e.preventDefault();
     // Form submission logic here
   };
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  },[])
 
   return (
     <>
@@ -150,7 +154,7 @@ const ContactUsPage = () => {
 
       </div>
     </div>
-    <div className="w-full h-[450px]  overflow-hidden shadow-xl border-4 border-white  rounded-2xl">
+    <div className="w-full h-1/2  overflow-hidden shadow-xl border-4 border-white  rounded-2xl">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.2555156173057!2d77.0827245749552!3d28.592110485916162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1bae6d0904b7%3A0x938fa4b31f997e05!2sAi.Risezonic!5e0!3m2!1sen!2sin!4v1774440130187!5m2!1sen!2sin" width="100%" height="450" style={{border:0 }}allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     </>

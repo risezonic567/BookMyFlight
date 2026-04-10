@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Plane, User, Mail, Phone, Ticket } from 'lucide-react';
@@ -35,6 +35,10 @@ const Booking = () => {
     // Confirmation page par bhejein
     navigate('/confirmation', { state: { bookingDetails: { flight: selectedFlight, passenger: passenger } } });
   };
+
+   useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
   // Agar user direct direct dynamic logic ke through agale page par jaata hai toh flight check
   if (!selectedFlight) {

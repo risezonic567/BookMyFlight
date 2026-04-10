@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BsArrowLeftRight } from 'react-icons/bs';
 import { SlCalender } from 'react-icons/sl';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -85,7 +85,12 @@ const deals = [
   }
 ];
 
+
+
 function MyBooking() {
+   useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
   return (
     <div className='w-full'>
       <div className=' flex flex-col max-w-xl px-15 items-center mx-auto justify-center my-5 '>
