@@ -11,7 +11,7 @@ const Navbar = () => {
   const languages = [
     { name: "English", code: "en", label: "EN" },
     { name: "Spanish", code: "es", label: "ES" },
-  ];
+  ]; 
 
   // Language Change Logic (Cookies Based - Sabse Stable)
   const handleLangChange = (langCode, label) => {
