@@ -12,11 +12,11 @@ function AboutUs() {
    <section>
      <div className="bg-white font-sans">
       
-      <div className="relative w-full h-[450px] md:h-[500px] flex items-center justify-center">
+      <div className="relative w-full h-[450px] md:h-[450px] flex items-center justify-center">
         <img 
-          src="/blog/Four.jpeg" 
+          src="/about/About-us-Banner.jpg.jpeg" 
           alt="About Us Banner" 
-          className="absolute inset-0 w-full h-[500px] object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
 
         <div className="absolute inset-0 bg-black/40"></div>
@@ -30,11 +30,11 @@ function AboutUs() {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           
           <div>
-            <div className="rounded-sm overflow-hidden shadow-sm">
+            <div className="rounded-sm overflow-hidden shadow-sm ">
               <img 
-                src="/images/Cancun, Mexico.jpg.jpeg" 
+                src="/about/About-us-image.jpg.jpeg" 
                 alt="Our Team" 
-                className="w-[450px] h-[450px] rounded-xl object-cover"
+                className="w-full h-full rounded-xl object-cover"
               />
             </div>
           </div>

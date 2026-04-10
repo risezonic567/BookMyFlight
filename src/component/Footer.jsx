@@ -8,10 +8,10 @@ import {
 import { Link } from "react-router-dom";
 
 const iconTag = [
-  <FaFacebook />,
-  <FaInstagram />,
-  <FaXTwitter />,
-  <FaLinkedin />,
+  { icon: <FaFacebook />, color:"bg-blue-600"},
+  { icon: <FaInstagram />, color:"bg-pink-500"},
+  { icon: <FaXTwitter />, color: "bg-black"},
+  { icon: <FaLinkedin />, color: "bg-blue-700"}
 ];
 
 const Footer = () => {
@@ -44,12 +44,12 @@ const Footer = () => {
             </div>
             {/* <p className="text-[12px] opacity-80 mb-4 font-medium">FlSot No.: <span className="font-bold">FLST43760</span></p> */}
             <div className="flex gap-2">
-              {iconTag.map((icon, index) => (
+              {iconTag.map((item, index) => (
                 <div
                   key={index}
-                  className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 cursor-pointer text-xs font-bold"
+                  className={`w-8 h-8 rounded-full border border-white/30 flex items-center ${item.color}  justify-center hover:bg-white/10 cursor-pointer text-xs font-bold`}
                 >
-                  {icon}
+                  {item.icon}
                 </div>
               ))}
             </div>
