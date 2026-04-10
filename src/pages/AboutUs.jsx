@@ -1,12 +1,80 @@
 import React from 'react'
 import FAQSection from '../component/FAQSection'
+import Testimonial from '../component/Testimonial'
 
 function AboutUs() {
   return (
-    <div>
-      <FAQSection/>
+   <>
+   <section>
+     <div className="bg-white font-sans">
+      
+      <div className="relative w-full h-[450px] md:h-[500px] flex items-center justify-center">
+        <img 
+          src="/blog/Four.jpeg" 
+          alt="About Us Banner" 
+          className="absolute inset-0 w-full h-[500px] object-cover"
+        />
+
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        <h1 className="relative z-10 text-white text-4xl md:text-5xl font-normal">
+          About Us
+        </h1>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+          
+          <div>
+            <div className="rounded-sm overflow-hidden shadow-sm">
+              <img 
+                src="/images/Cancun, Mexico.jpg.jpeg" 
+                alt="Our Team" 
+                className="w-[450px] h-[450px] rounded-xl object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="w-full lg:w-7/12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+              About Book My Flight
+            </h2>
+            
+            <div className="text-gray-600 space-y-5 leading-relaxed text-sm md:text-base">
+              <p>
+                BookMyFlight started off in <strong>2014</strong> with the clear objective of providing unmatched flight deals to people who are looking for inexpensive flight tickets for their domestic and international travel needs.
+              </p>
+              
+              <p>
+                The company has been a steady progress ever since under the able leadership of Tanya Chadha, the woman behind this success story and the owner of the company.
+              </p>
+
+              <h3 className="text-xl font-bold text-gray-800 pt-4">
+                Value-based Travel at Affordable Prices
+              </h3>
+              
+              <p>
+                At BookMyFlight, we are passionate about travel. We believe that journeys can be life enriching and are happy to assist you in making your travel arrangements. From exotic beach destinations to places brimming with a rich cultural heritage, we help our customers find the perfect trip in absolutely any part of the world.
+              </p>
+              
+              <p>
+                Traveling within a specific budget is not only desired but also necessary for you to get the most out of your vacation. Having a deep understanding of all the factors of traveling, we are committed towards our objective of making your travel desires come true. In our travel portal, you can search a wide array of flight, hotel and rental car deals at prices that fit your budget.
+              </p>
+
+              <p>
+                We roll out competitive prices on flight tickets, hotel rooms and rental cars from some of the most trusted global brands. We offer you exciting deals to kick-off your vacation, so that it doesn't put a hole in your pocket. You can rest assured that along with price savings you get to enjoy the exceptional services we provide to you throughout the duration of your trip.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
-  )
-}
+      <Testimonial/>
+      <FAQSection/>
+   </section>
+   </>
+  );
+};
 
 export default AboutUs

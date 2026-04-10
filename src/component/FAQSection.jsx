@@ -12,11 +12,11 @@ const FAQSection = () => {
     { q: "How to search for the best deal or find the latest offer on FlightsChannel?", a: "You can use our search engine or call our toll-free number for exclusive offline deals." },
     { q: "How you can ensure that your flight reservation with FlightsChannel has been successfully completed?", a: "Once booked, you will receive a confirmation email with your e-ticket and booking reference." },
     { q: "Can I book airtickets for international flights on your website?", a: "Yes, we offer both domestic and international flight bookings globally." },
-    { q: "Can I book round-trip and one-way airtickets?", a: "Absolutely, you can select your trip type in the search engine." },
-    { q: "Can I book airtickets for multiple passengers in one transaction?", a: "Yes, our passenger picker allows you to add multiple adults, children, and infants." },
-    { q: "Do you offer last-minute airtickets?", a: "Yes, we have special deals for last-minute travelers depending on airline availability." },
-    { q: "Why is my airticket price higher than the original search result?", a: "Prices are dynamic and can change in real-time based on airline availability." },
-    { q: "How can I use promo codes when booking airtickets?", a: "You can apply promo codes on the payment page before final checkout." }
+    // { q: "Can I book round-trip and one-way airtickets?", a: "Absolutely, you can select your trip type in the search engine." },
+    // { q: "Can I book airtickets for multiple passengers in one transaction?", a: "Yes, our passenger picker allows you to add multiple adults, children, and infants." },
+    // { q: "Do you offer last-minute airtickets?", a: "Yes, we have special deals for last-minute travelers depending on airline availability." },
+    // { q: "Why is my airticket price higher than the original search result?", a: "Prices are dynamic and can change in real-time based on airline availability." },
+    // { q: "How can I use promo codes when booking airtickets?", a: "You can apply promo codes on the payment page before final checkout." }
   ];
 
   return (
