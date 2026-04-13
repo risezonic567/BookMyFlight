@@ -25,7 +25,7 @@ export default function LoginPage() {
           
           <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
 
-          {/* SOCIAL LOGIN - TOP */}
+          {/* SOCIAL LOGIN - TOP */}  
           <button className="w-full flex cursor-pointer items-center justify-center gap-2 border py-2 rounded-lg mb-3 hover:bg-blue-300 transition">
             <img
               src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
