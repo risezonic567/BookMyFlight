@@ -7,12 +7,14 @@ import FAQSection from '../component/FAQSection';
 import Newsletter from '../component/Newsletter';
 import BlogSlider from '../component/BlogSlider';
 import TrustSection from '../component/TrustSection';
+import Services from '../component/Services';
 
 const Home = () => {
   return (
     <div>
       <SearchEngine />
       <TrustSection/>
+      <Services/>
       <PopularDeals/>
       <PopularDestinations />
       <TopFlightDeals/>

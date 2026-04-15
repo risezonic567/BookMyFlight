@@ -58,8 +58,8 @@ const SearchEngine = () => {
 
       <div className="relative z-10 w-full max-w-7xl">
         <div className="mb-8 text-left">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Explore the Skies</h1>
-          <p className="text-white/90 text-lg">Book your next adventure with ease.</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Cheap International Flights from USA  </h1>
+          <p className="text-white/90 text-lg"> – Book & Save Big</p>
         </div>
 
         <div className="bg-black/60 backdrop-blur-xl rounded-3xl shadow-2xl p-5 md:p-8 border border-white/10 w-full">

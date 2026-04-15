@@ -2,235 +2,146 @@ import React, { useEffect } from 'react'
 import { BsArrowLeftRight } from 'react-icons/bs';
 import { SlCalender } from 'react-icons/sl';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { FaTicketAlt, FaUser } from "react-icons/fa";
 
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
 
-import { Navigation, Autoplay } from "swiper/modules";
+import MyBookingContent from '../component/mybooking/MyBookingContent';
 
 const deals = [
-  {
-    id: 1,
-    from: "New York",
-    to: "New York City",
-    img: "/images/Banner.jpg.jpeg",
-    airline: "Delta",
-    price: 120,
-    date: "May 02, 2026 - May 05, 2026"
-  },
-  {
-    id: 2,
-    from: "Chicago",
-    to: "San Francisco",
-    img: "/images/Banner.jpg.jpeg",
-    airline: "United",
-    price: 180,
-    date: "May 10, 2026 - May 14, 2026"
-  },
-  {
-    id: 3,
-    from: "Dallas",
-    to: "Los Angeles",
-    img: "/images/Banner.jpg.jpeg",
-    airline: "American Airlines",
-    price: 150,
-    date: "May 12, 2026 - May 16, 2026"
-  },
-  {
-    id: 4,
-    from: "Seattle",
-    to: "Las Vegas",
-    img: "/images/Banner.jpg.jpeg",
-    airline: "Southwest",
-    price: 95,
-    date: "May 15, 2026 - May 18, 2026"
-  },
-  {
-    id: 5,
-    from: "Atlanta",
-    to: "Miami",
-    img: "/images/Banner.jpg.jpeg",
-    airline: "JetBlue",
-    price: 130,
-    date: "May 18, 2026 - May 22, 2026"
-  },
-  {
-    id: 6,
-    from: "Phoenix",
-    to: "Grand Canyon",
-    img: "/images/Banner.jpg.jpeg",
-    airline: "Frontier",
-    price: 80,
-    date: "May 20, 2026 - May 23, 2026"
-  },
-  {
-    id: 7,
-    from: "Orlando",
-    to: "Walt Disney World",
-    img: "/images/Banner.jpg.jpeg",
-    airline: "Alaska Airlines",
-    price: 110,
-    date: "May 25, 2026 - May 28, 2026"
-  },
-  {
-    id: 8,
-    from: "Denver",
-    to: "Yellowstone National Park",
-    img: "/images/Banner.jpg.jpeg",
-    airline: "United",
-    price: 170,
-    date: "May 28, 2026 - June 01, 2026"
-  }
+  { id: 1, from: "New York", to: "Mumbai", img: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1000", airline: "Delta", price: 650, date: "May 15 - May 30" },
+  { id: 2, from: "London", to: "New Delhi", img: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?q=80&w=1000", airline: "British Airways", price: 580, date: "June 01 - June 10" },
+  { id: 3, from: "Dubai", to: "Bangalore", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1000", airline: "Emirates", price: 420, date: "May 20 - May 25" },
+  { id: 4, from: "Toronto", to: "Chennai", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000", airline: "Air Canada", price: 790, date: "July 10 - July 20" }
 ];
 
-
-
 function MyBooking() {
-   useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   return (
-    <div className='w-full'>
-      <div className=' flex flex-col max-w-xl px-15 items-center mx-auto justify-center my-5 '>
-        <h1 className='text-blue-950 pb-5 font-bold text-3xl'>Access Trip Itinerary</h1>
-        <img src="https://www.flightschannel.com/images/booking-flight.png" alt="" className='w-22 py-8'/>
-        <p className='pb-5 flex items-start text-black/80 font-semibold text-xl'>To check your existing booking details, please enter your Booking ID/PNR number. For new bookings, visit our homepage, call us at +1-844-609-9922, or chat with us.</p>
-        <div className='flex flex-col items-start gap-2 w-full'>
-            <h1 className='text-xl text-black/70'>BookingID / PNR No.</h1>
-            <input type="text"
-            placeholder='BookingID / PNR No.'
-            className='flex items-start p-1 w-full pl-3 border border-gray-300 rounded-md'
-            />
-        </div>
-        <div className='flex flex-col items-start gap-2 w-full'>
-            <h1 className='text-xl text-black/70 pt-5'>Last Name</h1>
-            <input type="text" 
-            placeholder='Last Name'
-            className='flex items-start  border border-gray-300 bg-white rounded pl-3 p-1 w-full'
-            />
-        </div>
-        <button className='mt-5 w-full bg-blue-900 py-2 mb-10 text-white font-bold rounded-md'>
-            Search Booking
-        </button>
-      </div>
-
-      <div>
-         <div className="bg-[#f3f7ff] py-16 px-4">
-        <div className="max-w-7xl mx-auto bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-gray-100 relative">
-
-          {/* HEADER */}
-          <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-4xl font-extrabold text-blue-600 mb-2 uppercase">
-              Top Flight Deals
-            </h2>
-            <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
-              Get access to unbeatable flight offers tailored to your travel needs.
+    <div className='w-full bg-white'>
+      
+      {/* --- NEW HERO SECTION (Replacing Old Slider) --- */}
+      <div className="relative bg-gradient-to-r from-blue-900 to-blue-700 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Side: Text & Brand */}
+          <div className="text-white space-y-6">
+            <span className="bg-blue-500/30 text-blue-200 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">
+              Manage Your Trip
+            </span>
+            <h1 className="text-4xl md:text-6xl font-black leading-tight">
+              Ready for your <br /> <span className="text-blue-400">Next Adventure?</span>
+            </h1>
+            <p className="text-blue-100 text-lg md:text-xl max-w-md">
+              Access your itinerary, modify bookings, or download tickets in just a few clicks.
             </p>
           </div>
 
-          {/* ARROWS */}
-          <button className="prev-btn absolute left-0 md:-left-5 cursor-pointer top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg w-10 h-10 flex items-center justify-center rounded-full hover:bg-blue-100">
-            <IoIosArrowBack size={20} />
-          </button>
-
-          <button className="next-btn absolute right-0 md:-right-5 cursor-pointer top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg w-10 h-10 flex items-center justify-center rounded-full hover:bg-blue-100">
-            <IoIosArrowForward size={20} />
-          </button>
-
-          {/* SWIPER */}
-          <Swiper
-            speed={500}
-            spaceBetween={20}
-            loop={true}
-            autoplay={{ delay: 2500, disableOnInteraction: false }}
-            navigation={{
-              nextEl: ".next-btn",
-              prevEl: ".prev-btn",
-            }}
-            breakpoints={{
-              0: { slidesPerView: 1 },
-              640: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 4 },
-            }}
-            modules={[Navigation, Autoplay]}
-            className="py-5"
-          >
-
-            {deals.map((deal) => (
-              <SwiperSlide key={deal.id}>
-
-                <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-blue-300 hover:shadow-xl transition duration-300">
-
-                  {/* IMAGE */}
-                  <div className="h-[250px] w-[282px] border overflow-hidden">
-                    <img
-                      src={deal.img}
-                      alt={deal.to}
-                      className="w-full h-full object-cover hover:scale-110 transition duration-500"
-                    />
-                  </div>
-
-                  {/* CONTENT */}
-                  <div className="p-5">
-
-                    {/* ROUTE */}
-                    <div className="flex items-center justify-between font-bold text-sm mb-4">
-                      <span>{deal.from}</span>
-                      <BsArrowLeftRight className="text-blue-500" size={12} />
-                      <span>{deal.to}</span>
-                    </div>
-
-                    {/* AIRLINE */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <img src={deal.logo} alt="" className="w-6 h-6" />
-                      <span className="text-xs text-gray-600">
-                        {deal.airline} • Economy
-                      </span>
-                    </div>
-
-                    {/* DATE */}
-                    <div className="bg-gray-100 rounded-lg p-2 flex items-center gap-2 mb-5">
-                      <SlCalender size={14} />
-                      <span className="text-xs">{deal.date}</span>
-                    </div>
-
-                    {/* PRICE */}
-                    <div className="flex items-end justify-between">
-                      <div>
-                        <p className="text-[10px] text-gray-500 uppercase">
-                          Starting From
-                        </p>
-                        <span className="text-xl font-bold text-green-600">
-                          ${deal.price}
-                        </span>
-                      </div>
-
-                      <button className="bg-blue-600 hover:bg-blue-700 text-white text-xs px-4 py-2 rounded-lg">
-                        Book Now
-                      </button>
-                    </div>
-
-                  </div>
-                </div>
-
-              </SwiperSlide>
-            ))}
-
-          </Swiper>
-
+          {/* Right Side: Glassmorphism Search Card */}
+          <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 shadow-2xl">
+            <h2 className="text-2xl font-bold text-white mb-6">Retrieve Booking</h2>
+            <div className="space-y-5">
+              <div className="relative">
+                <FaTicketAlt className="absolute left-4 top-4 text-blue-300" />
+                <input 
+                  type="text" 
+                  placeholder="Booking ID / PNR" 
+                  className="w-full bg-white/20 border border-white/30 p-3 pl-12 rounded-xl text-white placeholder:text-blue-200 focus:bg-white focus:text-blue-900 outline-none transition-all"
+                />
+              </div>
+              <div className="relative">
+                <FaUser className="absolute left-4 top-4 text-blue-300" />
+                <input 
+                  type="text" 
+                  placeholder="Last Name" 
+                  className="w-full bg-white/20 border border-white/30 p-3 pl-12 rounded-xl text-white placeholder:text-blue-200 focus:bg-white focus:text-blue-900 outline-none transition-all"
+                />
+              </div>
+              <button className="w-full bg-blue-500 hover:bg-blue-400 text-white font-black py-4 rounded-xl shadow-lg transition transform active:scale-95">
+                SEARCH BOOKING
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
+
+      {/* --- CONTENT SECTION --- */}
+      <MyBookingContent />
+
+      {/* --- RE-DESIGNED TOP DEALS SECTION --- */}
+      {/* <div className="bg-gray-50 py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900">Featured Destinations</h2>
+              <p className="text-gray-500 mt-2">Handpicked flight deals for your perfect getaway.</p>
+            </div>
+            <div className="flex gap-3">
+              <button className="prev-deal bg-white p-4 rounded-full shadow-md hover:bg-blue-600 hover:text-white transition cursor-pointer">
+                <IoIosArrowBack size={24} />
+              </button>
+              <button className="next-deal bg-white p-4 rounded-full shadow-md hover:bg-blue-600 hover:text-white transition cursor-pointer">
+                <IoIosArrowForward size={24} />
+              </button>
+            </div>
+          </div>
+
+          <Swiper
+            modules={[Navigation, Autoplay, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{ delay: 4000 }}
+            navigation={{ nextEl: ".next-deal", prevEl: ".prev-deal" }}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 }
+            }}
+          >
+            {deals.map((deal) => (
+              <SwiperSlide key={deal.id}>
+                <div className="group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                  <div className="relative h-64 overflow-hidden">
+                    <img src={deal.img} alt={deal.to} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-blue-900">
+                      {deal.airline}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="text-lg font-bold text-gray-800">{deal.from}</div>
+                      <BsArrowLeftRight className="text-blue-500" />
+                      <div className="text-lg font-bold text-gray-800">{deal.to}</div>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-500 text-sm mb-6">
+                      <SlCalender className="text-blue-400" />
+                      {deal.date}
+                    </div>
+                    <div className="flex items-center justify-between border-t pt-4">
+                      <div>
+                        <span className="text-sm text-gray-400 block uppercase font-bold text-[10px]">Total Price</span>
+                        <span className="text-2xl font-black text-blue-600">${deal.price}</span>
+                      </div>
+                      <button className="bg-gray-900 text-white px-5 py-2 rounded-xl font-bold hover:bg-blue-600 transition">
+                        View
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div> */}
     </div>
   )
 }
 
-export default MyBooking
-
-
-
-
-
+export default MyBooking;

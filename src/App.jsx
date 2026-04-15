@@ -23,6 +23,10 @@ import APISearchPage from './pages/APISearchPage';
 import APIResultPage from './pages/APIResultPage';
 import APIDetailedPage from './pages/APIDetailedPage';
 import DomesticFlightPage from './pages/DomesticFlightPage';
+import TermsCondition from './pages/TermsCondition';
+import CancellationAndRefundPolicy from './pages/CancellationAndRefundPolicy';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Disclaimer from './pages/Disclaimer';
 
 function App() {
   return (
@@ -52,6 +56,10 @@ function App() {
             <Route path='/api-result-page'element={<APIResultPage/>}/>
             <Route path='/api-detailed-page'element={<APIDetailedPage/>}/>
             <Route path="/domestic-flights" element={<DomesticFlightPage />} />
+            <Route path='/terms-condition' element={<TermsCondition/>}/>
+            <Route path='/cancellation-refund-policy' element={<CancellationAndRefundPolicy/>}/>
+            <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
+            <Route path='/disclaiamer' element={<Disclaimer/>}/>
           </Routes>
         </main>
         <Footer />

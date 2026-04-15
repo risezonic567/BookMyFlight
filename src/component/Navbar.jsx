@@ -83,6 +83,7 @@ const Navbar = () => {
 
         {/* Right Side Actions */}
         <div className="flex items-center gap-3 md:gap-5">
+          
           <Link to="/login" className="text-gray-700 hover:text-blue-600">
             <User size={22} />
           </Link>
@@ -114,13 +115,14 @@ const Navbar = () => {
           <button className="lg:hidden p-1" onClick={() => setIsMobileMenuOpen(true)}>
             <Menu size={30} />
           </button>
+          <a className="font-semibold md:block hidden" href="tel:+1 818-772-6235">+1 818-772-6235</a>
         </div>
       </div>
 
       {/* MOBILE DRAWER (Original Style) */}
       <div className={`fixed inset-0 bg-black/40 z-[60] lg:hidden transition-opacity ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={() => setIsMobileMenuOpen(false)}>
         <div className={`fixed top-0 right-0 h-full w-[280px] bg-white p-6 transform transition-transform ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`} onClick={(e) => e.stopPropagation()}>
-          <div className="flex justify-between items-center mb-10">
+          <div className="flex justify-between items-center mb-10 mr-9">
             <span className="font-bold text-blue-900 text-xl">Menu</span>
             <button onClick={() => setIsMobileMenuOpen(false)}><X size={28} /></button>
           </div>
@@ -128,6 +130,7 @@ const Navbar = () => {
             <Link to="/my-booking" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold border-b pb-2">My Booking</Link>
             <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold border-b pb-2">Blogs</Link>
             <Link to="/packages" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold border-b pb-2">Packages</Link>
+            <a className="text-lg font-semibold border-b pb-2 " href="tel:+1 818-772-6235">+1 818-772-6235</a>
           </nav>
         </div>
       </div>

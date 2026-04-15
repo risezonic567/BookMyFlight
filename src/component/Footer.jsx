@@ -15,6 +15,7 @@ const iconTag = [
 ];
 
 const Footer = () => {
+  
   return (
     <footer className="bg-[#4171ed] text-white pt-24 pb-12">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -178,14 +179,14 @@ const Footer = () => {
         {/* Bottom copyright */}
         <div className=" border-t border-white/10 flex flex-col md:flex-row justify-between items-center  text-[12px] opacity-70">
           <div className="flex gap-4">
-            <span className="hover:underline cursor-pointer">Terms Of Use</span>
-            <span className="hover:underline cursor-pointer">Disclaimer</span>
-            <span className="hover:underline cursor-pointer">
-              Cancellation Policy
-            </span>
-            <span className="hover:underline cursor-pointer">
+            <Link to="/terms-condition"><span className="hover:underline cursor-pointer">Terms Condition</span></Link>
+            <Link to="/disclaiamer"><span className="hover:underline cursor-pointer">Disclaimer</span></Link>
+            <Link to="/cancellation-refund-policy"><span className="hover:underline cursor-pointer">
+              Cancellation Refund Policy
+            </span></Link>
+            <Link to="/privacy-policy"><span className="hover:underline cursor-pointer">
               Privacy Policy
-            </span>
+            </span></Link>
           </div>
           <p>Copyright © 2016-2025 FlightsChannel LLC. All Rights Reserved.</p>
         </div>

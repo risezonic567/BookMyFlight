@@ -1,62 +1,60 @@
 import React, { useState } from 'react';
 
 const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState(0); // Pehla wala open rakhenge default
+  // Default mein pehla index (0) open rakhne ke liye useState(0) kiya hai
+  const [openIndex, setOpenIndex] = useState(false); 
 
   const faqs = [
     { 
-      q: "Why you should book airtickets from FlightsChannel website?", 
-      a: "Saving money on air tickets is an art and FlightsChannel has all the right tools which will help you to book cheap air tickets. For air travel usually, travelers prefer to book directly through popular websites. But FlightsChannel is the best flight booking agency when it comes to finding all the cheapest available deals both online and offline. The agents at FlightsChannel will help you to find the best deal over the call too." 
+      q: "1. How can I find cheap international flights from the USA?", 
+      a: "Finding cheap international flights from the USA depends on booking at the right time, being flexible with travel dates, and comparing multiple options. At Book My Flight, we help you access discounted fares, special deals, and last-minute offers to get the best possible price." 
     },
-    { q: "What is the best possible way to buy air tickets at a reasonable cost?", a: "Booking in advance and staying flexible with your dates is key." },
-    { q: "How to search for the best deal or find the latest offer on FlightsChannel?", a: "You can use our search engine or call our toll-free number for exclusive offline deals." },
-    { q: "How you can ensure that your flight reservation with FlightsChannel has been successfully completed?", a: "Once booked, you will receive a confirmation email with your e-ticket and booking reference." },
-    { q: "Can I book airtickets for international flights on your website?", a: "Yes, we offer both domestic and international flight bookings globally." },
-    // { q: "Can I book round-trip and one-way airtickets?", a: "Absolutely, you can select your trip type in the search engine." },
-    // { q: "Can I book airtickets for multiple passengers in one transaction?", a: "Yes, our passenger picker allows you to add multiple adults, children, and infants." },
-    // { q: "Do you offer last-minute airtickets?", a: "Yes, we have special deals for last-minute travelers depending on airline availability." },
-    // { q: "Why is my airticket price higher than the original search result?", a: "Prices are dynamic and can change in real-time based on airline availability." },
-    // { q: "How can I use promo codes when booking airtickets?", a: "You can apply promo codes on the payment page before final checkout." }
+    { q: "2. Do you offer last-minute flight deals from the USA?", a: "Yes, Book My Flight specializes in last minute flight deals in the USA. Whether it’s an emergency trip or sudden travel plan, we help you find affordable options even on short notice." },
+    { q: "3. Can I book flights from the USA to India at discounted prices?", a: "Absolutely. We provide competitive pricing on flights from the USA to India, including seasonal offers and exclusive deals that are not always available on standard booking platforms." },
+    { q: "4. Are business class flights available at lower prices?", a: "Yes, we offer affordable business class flights to the USA with special discounts on selected routes. You can enjoy premium comfort at reduced prices by booking through our platform." },
+    { q: "5. What is the best time to book international flights from the USA?", a: "The best time to book international flights is usually 3–6 weeks in advance. However, deals may vary depending on the destination, season, and demand. Book My Flight helps you track and find the best timing for booking." },
+    { q: "6. Are flight tickets refundable or changeable?", a: "Refund and change policies depend on the airline and ticket type. Some tickets are refundable, while others may have restrictions. We always guide you on fare rules before booking to avoid confusion." }
   ];
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
-        <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
-          FAQ About Air Ticket Reservation
+        <h2 className="text-3xl md:text-4xl font-black text-[#395977] mb-12 text-center">
+          FAQ (Frequently Asked Questions)
         </h2>
         
-        <div className="grid grid-cols-1 gap-3">
+        {/* Yahan grid-cols-1 (mobile) aur md:grid-cols-2 (desktop) use kiya hai */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
               <div 
                 key={i} 
-                className={`border rounded-xl transition-all duration-300 overflow-hidden ${
-                  isOpen ? 'bg-[#2b59ff] border-[#2b59ff] shadow-lg' : 'bg-white border-gray-200'
+                className={`border rounded-2xl transition-all duration-300 overflow-hidden h-fit ${
+                  isOpen ? 'bg-[#2b59ff] border-[#2b59ff] shadow-xl scale-[1.02]' : 'bg-white border-gray-200 hover:border-blue-200'
                 }`}
               >
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full p-4 md:p-5 text-left flex justify-between items-center group"
+                  className="w-full p-5 text-left flex justify-between items-start gap-4 group"
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-start gap-4">
                     {/* Q Icon */}
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold shrink-0 ${
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold shrink-0 transition-colors ${
                       isOpen ? 'bg-white text-[#2b59ff]' : 'bg-[#2b59ff] text-white'
                     }`}>
                       Q
                     </div>
-                    <span className={`font-semibold text-[15px] md:text-[16px] ${
-                      isOpen ? 'text-white' : 'text-gray-700'
+                    <span className={`font-bold text-lg leading-tight ${
+                      isOpen ? 'text-white' : 'text-[#0C2442]'
                     }`}>
                       {faq.q}
                     </span>
                   </div>
                   
                   {/* Arrow Icon */}
-                  <span className={`transition-transform duration-300 ${isOpen ? 'rotate-180 text-white' : 'text-gray-400'}`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                  <span className={`mt-1 transition-transform duration-300 ${isOpen ? 'rotate-180 text-white' : 'text-gray-400'}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
                       <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                     </svg>
                   </span>
@@ -66,12 +64,9 @@ const FAQSection = () => {
                 <div className={`transition-all duration-300 ease-in-out ${
                   isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                 }`}>
-                  <div className="px-5 pb-5 ml-11 border-t border-white/20 pt-4 flex gap-4">
-                    {/* A Icon */}
-                    <div className="w-7 h-7 rounded-full bg-white text-[#2b59ff] flex items-center justify-center text-[12px] font-bold shrink-0">
-                      A
-                    </div>
-                    <p className="text-white text-[14px] leading-relaxed opacity-90">
+                  <div className="px-6 pb-6 pt-2 flex gap-4">
+                    <div className="w-8 shrink-0"></div> {/* Spacing adjustment */}
+                    <p className={`text-sm leading-relaxed ${isOpen ? 'text-blue-50' : 'text-gray-600'}`}>
                       {faq.a}
                     </p>
                   </div>
